@@ -1,0 +1,237 @@
+
+{%extends 'base.html'%}
+{%block head%}
+<style type="text/css">
+#div_1 { width:80px; height:230px; background:white;position:fixed; _position:absolute; right:0px; top:0px;text-align:center;line-height: 40px;margin: 20px;   }
+/*background:#009933;*/
+#div_1 a{text-decoration: none; color:#37ab40}
+#div_1 a:hover{color:#ff8800}
+
+</style>
+<script type="text/javascript">
+window.onscroll = window.onresize = window.onload = function(){
+
+ var odiv = document.getElementById("div_1");
+ // var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+ var cHeight= document.documentElement.clientHeight || document.body.clientHeight;
+ var mid = (cHeight - odiv.offsetHeight) / 2;
+ // odiv.style.top = parseInt(sTop + mid) + "px";   //理论上应该只设这句就可以居中吧
+
+ //实际上的 各大浏览器只认识下面这if判断
+ if(navigator.appVersion.indexOf("MSIE 6")> -1){
+  odiv.style.top = parseInt(sTop + mid) + "px";
+ }else{
+  odiv.style.top =mid + "px";
+ }
+}
+</script>
+{%endblock head%}
+{%block content%}
+	<div id="div_1"><font size='4'color="white"><a href="#"><font color="#ff8800">快速搜索</font></a> <hr><a href="search/?q=增强记忆"> 增强记忆</a> <hr><a href="search/?q=美容养颜">美容养颜</a>
+	<hr><a href="search/?q=清热去火">清热去火</a><hr><a href="search/?q=强化视力">强化视力</a>
+	</font></div>
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="">首页</a></li>
+				<!--<li class="interval">|</li>-->
+				<!--<li><a href="search/?q=维生素"><font size="5" color="green">富含维生素</font></a></li>-->
+				<!--<li class="interval">|</li>-->
+				<!--<li><a href="search/?q=增强记忆"><font size="5" color="green">增强记忆</font></a></li>-->
+				<!--<li class="interval">|</li>-->
+				<!--<li><a href="search/?q=清热"><font size="5" color="green">清热去火</font></a></li>-->
+				<!--<li class="interval">|</li>-->
+				<!--<li><a href="search/?q=抗衰老"><font size="5" color="green">抗衰老</font></a></li>-->
+			</ul>
+		</div>
+	</div>
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			<li><a href="#model01" class="fruit">地标水果</a></li>
+			<li><a href="#model02" class="seafood">海外水果</a></li>
+			<li><a href="#model03" class="meet">时令水果</a></li>
+			<li><a href="#model04" class="egg">特色水果</a></li>
+			<li><a href="#model05" class="vegetables">果篮</a></li>
+			<li><a href="#model06" class="ice">水果干</a></li>
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li><img src="/static/images/slide1.jpg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide2.jpg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide3.jpg" alt="幻灯片"></li>
+				<li><img src="/static/images/slide4.jpg" alt="幻灯片"></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+			<a href="#"><img src="/static/images/side01.jpg"></a>
+			<a href="#"><img src="/static/images/side02.jpg"></a>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">地标水果</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type01 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list1_1_1" class="goods_more fr" id="fruit_more">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index01.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type0%}
+				<li>
+					<h4><a href="/{{g.id}}">{{g.gtitle|slice:'5'}}</a></h4>
+					<a href="{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model02">海外水果</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type11 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list2_1_1/" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index02.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type1%}
+				<li>
+					<h4><a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">时令水果</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type21 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list3_1_1/" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index03.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type2%}
+				<li>
+					<h4><a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">特色水果</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type31 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list4_1_1/" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index04.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type3%}
+				<li>
+					<h4><a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model05">果篮</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type41 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list5_1_1/" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index05.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type4%}
+				<li>
+					<h4><a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">水果干</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for g in type51 %}
+				<a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a>
+				{%endfor%}
+			</div>
+			<a href="/goods/list6_1_1" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="/static/images/index06.jpg"></div>
+			<ul class="goods_list fl">
+				{%for g in type5%}
+				<li>
+					<h4><a href="/goods/{{g.id}}">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+					<div class="prize">¥ {{g.gprice}}</div>
+				</li>
+				{%endfor%}
+			</ul>
+		</div>
+	</div>
+{%endblock content%}

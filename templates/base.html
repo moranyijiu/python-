@@ -1,0 +1,104 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>天天水果</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">{{title}}</div>
+			<div class="fr">
+				{%if request.session.user_name|default:'' != ''%}
+				<div class="login_btn fl">
+					欢迎您：<em>{{request.session.user_name}}</em>
+					<span>|</span>
+					<a href="/user/logout/">退出</a>
+				</div>
+				{%else%}
+				<div class="login_btn fl">
+					<a href="/user/login/">登录</a>
+					<span>|</span>
+					<a href="/user/register/">注册</a>
+				</div>
+				{%endif%}
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/user/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/user/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{%block head%}{%endblock head%}
+</head>
+<body>
+<div class="search_bar clearfix">
+		<a href="/goods/" class="logo fl"><img src="/static/images/logo1.png"></a>
+	{%if page_name == 1%}
+		<div class="search_con fl">
+
+			<form method='get' action='/goods/search/' target='_blank'>
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+				<input type="submit" class="input_btn fr"  value="搜索">
+			</form>
+		</div>
+	{% endif %}
+	{%if guest_cart == 1%}
+	<div class="search_con fl">
+			<!--<input type="text" class="input_text fl" name="" placeholder="搜索商品">-->
+			<!--<input type="button" class="input_btn fr" name="" value="搜索">-->
+		<form method='get' action='/goods/search/' target='_blank'>
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+				<input type="submit" class="input_btn fr"  value="搜索">
+		</form>
+	</div>
+		<div class="guest_cart fr">
+			<a href="/cart/" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count">{{cart_count}}</div>
+		</div>
+	{%endif%}
+</div>
+
+{%block content%}{%endblock content%}
+
+<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2017 软件工程项目第2小组 All Rights Reserved</p>
+		<p>电话：010-****888    豫ICP备*******8号</p>
+	</div>
+	<!--<script type="text/javascript" src="static/js/slideshow.js"></script>-->
+	<!--<script type="text/javascript">-->
+		<!--BCSlideshow('focuspic');-->
+		<!--var oFruit = document.getElementById('fruit_more');-->
+		<!--var oShownum = document.getElementById('show_count');-->
+
+		<!--var hasorder = localStorage.getItem('order_finish');-->
+
+		<!--if(hasorder)-->
+		<!--{-->
+			<!--oShownum.innerHTML = '2';-->
+		<!--}-->
+
+		<!--oFruit.onclick = function(){-->
+			<!--window.location.href = 'list.html';-->
+		<!--}-->
+	<!--</script>-->
+</body>
+</html>

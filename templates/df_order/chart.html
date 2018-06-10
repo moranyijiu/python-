@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>天天水果销量信息统计</title>
+<script src="/static/chart/jquery.min.js"></script>
+<script src="/static/chart/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="width: 1100px; height: 800px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var chart = {
+      type: 'column'
+   };
+   var title = {
+      text: '销量统计'
+   };
+   var subtitle = {
+      text: '数据来源：天天水果'
+   };
+   var xAxis = {
+      categories:[
+        {% for ss in list_name %}
+                            "{{ss}}",
+        {% endfor %}
+      ],
+      crosshair: true
+   };
+   var yAxis = {
+      min: 0,
+      title: {
+         text: '销量/金额'
+      }
+   };
+   var tooltip = {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+         '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+   };
+   var plotOptions = {
+      column: {
+         pointPadding: 0.2,
+         borderWidth: 0
+      }
+   };
+   var credits = {
+      enabled: false
+   };
+
+   var series= [
+         {
+            name: '金额',
+            data:{{list_qian}}
+         },
+        {
+            name: '个数',
+            data:{{list_count}}
+        }
+        ];
+
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.series = series;
+   json.plotOptions = plotOptions;
+   json.credits = credits;
+   $('#container').highcharts(json);
+
+});
+</script>
+<br><br><br>>
+
+
+
+
+<br><br><br>
+<div id="container2" style="width: 1100px; height: 800px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var title = {
+      text: '销售额前五统计'
+   };
+   var subtitle = {
+      text: '数据来源：天天水果'
+   };
+   var xAxis = {
+      categories: [
+             {% for ss in list1_name %}
+                            "{{ss}}",
+        {% endfor %}
+      ],
+   };
+   var yAxis = {
+      title: {
+         text: '金额 (元)'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };
+
+   var tooltip = {
+      valueSuffix: ''
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+
+   var series =  [
+      {
+         name: '金额',
+         data:{{list1_qian}}
+      },
+       {
+         name: '个数',
+         data:{{list1_count}}
+      },
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+
+   $('#container2').highcharts(json);
+});
+</script>
+<br><br><br>
+<div id="container3" style="width: 1100px; height: 800px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var title = {
+      text: '销量前五统计'
+   };
+   var subtitle = {
+      text: '数据来源：天天水果'
+   };
+   var xAxis = {
+      categories: [
+             {% for ss in list2_name %}
+                            "{{ss}}",
+        {% endfor %}
+      ],
+   };
+   var yAxis = {
+      title: {
+         text: '金额 (元)'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };
+
+   var tooltip = {
+      valueSuffix: ''
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+
+   var series =  [
+      {
+         name: '金额',
+         data:{{list2_qian}}
+      },
+       {
+         name: '个数',
+         data:{{list2_count}}
+      },
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+
+   $('#container3').highcharts(json);
+});
+</script>
+<br><br><br>
+
+<div id="container1" style="width: 825px; height: 600px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var chart = {
+       plotBackgroundColor: null,
+       plotBorderWidth: null,
+       plotShadow: false
+   };
+   var title = {
+      text: '水果销量占有比例'
+   };
+   var tooltip = {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+   };
+   var plotOptions = {
+      pie: {
+         allowPointSelect: true,
+         cursor: 'pointer',
+         dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}%</b>: {point.percentage:.1f} %',
+            style: {
+               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+            }
+         }
+      }
+   };
+   var series= [{
+      type: 'pie',
+      name: 'Browser share',
+      data: [
+                {% for module in list %}
+                      ["{{module.goods}}",{{module.count}}],
+                 {% endfor %}
+
+         <!--{-->
+            <!--name: '哈密瓜',-->
+            <!--y: 25,-->
+            <!--sliced: true,-->
+            <!--selected: true-->
+         <!--},-->
+      ]
+   }];
+
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.tooltip = tooltip;
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#container1').highcharts(json);
+});
+</script>
+
+
+</body>
+</html>

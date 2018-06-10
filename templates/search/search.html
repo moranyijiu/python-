@@ -1,0 +1,65 @@
+<!--程序名：搜索展示-->
+<!--编写人：朱剑昊-->
+<!--功能：搜索展示页面-->
+<!--时间：2017年11月8日-->
+<!--联系方式QQ：1174451687-->
+{%extends 'base.html'%}
+{% block head %}
+<script type="text/javascript">
+		$('.add_goods').click(function(){
+			//异步
+
+			var a=$(this).prop('id');//将产品的id附在属性id上。通过取得id得到产品
+			var i=a.toString();
+			$.get('/cart/add'+i+'_1'+'/',function(data){
+				$('#show_count').text(data.count);
+       		});
+		});
+		</script>
+{% endblock head%}
+
+{% block content%}
+<div class="navbar_con">
+</div>
+
+	<div class="breadcrumb">
+		&nbsp;&nbsp;全部分类&nbsp;>&nbsp;搜索
+	</div>
+	<div class="main_wrap clearfix">
+
+			<ul class="goods_type_list clearfix">
+				{%for g in page%}
+				<li>
+					<a href="/goods/{{g.object.id}}/"><img src="/static/{{g.object.gpic}}"></a>
+					<h4><a href="/{{g.object.id}}/">{{g.object.gtitle}}</a></h4>
+					<div class="operate">
+						<span class="prize">￥{{g.object.gprice}}</span>
+						<span class="unit">{{g.object.gunit}}</span>
+						<a href="/cart/add{{g.object.id}}_1/" class="add_goods" id='{{g.object.id}}'  title="加入购物车"></a>
+					</div>
+				</li>
+				{%endfor%}
+			</ul>
+
+			<div class="pagenation">
+				{%if page.has_previous%}
+					<a href="/goods/search/?q={{query}}&amp;page={{page.previous_page_number}}/"><上一页</a>
+				{%endif%}
+
+				{%for pindex in paginator.page_range%}
+					{%if pindex == page.number%}
+						<a href="#" class="active">{{pindex}}</a>
+					{%else%}
+
+					<a href="/goods/search/?q={{query}}&amp;page={{pindex}}/">{{pindex}}</a>
+					{%endif%}
+				{%endfor%}
+
+				{%if page.has_next%}
+					<a href='/goods/search/?q={{query}}&amp;page={{page.next_page_number}}/'>下一页></a>
+				{%endif%}
+			</div>
+		</div>
+	<!--</div>-->
+
+{% endblock content%}

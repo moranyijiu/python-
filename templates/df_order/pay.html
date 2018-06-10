@@ -1,0 +1,21 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>订单支付</title>
+</head>
+<body>
+<h1>这是模拟的一个支付页面</h1>
+请扫描以下二维码进行付款：<br>
+{{img}}
+<img src="{{img}}" content_type="image/png" width="350" height="350">
+<br>
+订单编号：{{order.oid}}<br>
+应付金额：{{order.ototal}}<br>
+付款成功，3秒后自动跳转
+<script>
+    <!--setTimeout('location.href="/user/order/";',5000);-->
+</script>
+</body>
+</html>
