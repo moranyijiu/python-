@@ -1,10 +1,11 @@
 # python-
-前台
-帐号python 
-密码123456789
-后台
-账号python
-密码123456789
+1.请先根据plist.txt安装环境。
+2.然后根据下面网址配置分词和全文检索。
+3.生成迁移文件  python manage.py makemigrations
+4.执行迁移  python manage.py migrate
+5.后台账号 python 密码123456789
+前台账号密码 商品信息等 请自行添加。。
+
 
 包括前台和后台，前台商城搜索使用Jieba分词和whoosh搜索引擎。
 分词+全文检索使用参考https://www.jianshu.com/p/8ad470cfe7cc
