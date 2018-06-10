@@ -12,5 +12,5 @@
 
 
 
-![？？？](https://github.com/moranyijiu/python-/raw/originmaster/img/2.png)
-![？？？](https://github.com/moranyijiu/python-/raw/master//img/3.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/2.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/3.png)
