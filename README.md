@@ -11,6 +11,13 @@
 后台包括 商品管理、顾客管理、订单管理、销量统计。
 
 
-
+![？？？](https://github.com/moranyijiu/python-/raw/master/1.jpg)
 ![？？？](https://github.com/moranyijiu/python-/raw/master/2.png)
 ![？？？](https://github.com/moranyijiu/python-/raw/master/3.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/4.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/5.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/6.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/7.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/8.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/9.png)
+![？？？](https://github.com/moranyijiu/python-/raw/master/10.png)
