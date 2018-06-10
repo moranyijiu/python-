@@ -1,4 +1,11 @@
 # python-
+前台
+帐号python 
+密码123456789
+后台
+账号python
+密码123456789
+
 本系统是由python语言编写开发的。运行需要python2.7和mysql数据库，所用框架为django1.8.2版本，所需要的库如下：
 MySQL-python==1.2.5
 Pillow==3.4.1
