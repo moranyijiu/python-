@@ -3,7 +3,7 @@
 2.然后根据下面网址配置分词和全文检索。
 3.生成迁移文件  python manage.py makemigrations
 4.执行迁移  python manage.py migrate
-5.后台账号 python 密码123456789
+5.创建后台管理 python manage.py createsuperuser
 前台账号密码 商品信息等 请自行添加。。
 
 
